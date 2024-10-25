@@ -23,13 +23,13 @@
 The Numerical Methods Solver is an application designed to provide solutions for various mathematical problems, including linear equations, non-linear equations, differential equations, and matrix inversion. This README file outlines the algorithms used in the application, providing detailed explanations for each method, including their workings, applications, advantages, and disadvantages.  
 
 #### <span style="font-size: 12px; font-weight: bold;">e. LU Factorization</span>  
-**Overview:** LU factorization decomposes a square matrix \(A\) into a product of a lower triangular matrix \(L\) and an upper triangular matrix \(U\).  
+**Overview:** LU factorization decomposes a square matrix A into a product of a lower triangular matrix L and an upper triangular matrix U.  
 
 **Steps:**  
-1. Start with a square matrix \(A\).  
-2. Initialize \(L\) as an identity matrix and \(U\) as a copy of \(A\).  
-3. Perform Gaussian elimination to convert \(U\) to upper triangular form while updating \(L\) with multipliers.  
-4. The result is \(A = LU\), where \(L\) contains the multipliers and \(U\) is upper triangular.  
+1. Start with a square matrix A.  
+2. Initialize L as an identity matrix and U as a copy of A.  
+3. Perform Gaussian elimination to convert U to upper triangular form while updating L with multipliers.  
+4. The result is A = LU, where L contains the multipliers and U is upper triangular.  
 
 **Applications:**  
 - Solving linear systems with the same coefficient matrix.  
@@ -42,14 +42,14 @@ The Numerical Methods Solver is an application designed to provide solutions for
 - More stable than some direct methods.  
 
 **Disadvantages:**  
-- Requires additional storage for \(L\) and \(U\).  
+- Requires additional storage for L and U.  
 - Can be unstable for singular or nearly singular matrices.  
 - Partial pivoting may be needed for better stability, complicating the process.  
 # Nonlinear Equations
 
-Nonlinear equations are equations where the relationship between variables is not linear. These equations include higher powers of variables (e.g., \(X^2\) or \(X^3\)), as well as trigonometric (e.g., sin(x), cos(x)), exponential, and logarithmic functions. In nonlinear equations, the dependent variable does not change in direct proportion to the independent variable.
+Nonlinear equations are equations where the relationship between variables is not linear. These equations include higher powers of variables (e.g., X^2 or X^3, as well as trigonometric (e.g., sin(x), cos(x)), exponential, and logarithmic functions. In nonlinear equations, the dependent variable does not change in direct proportion to the independent variable.
 
-For example, in the equation \(y = x^2 + 1\), as \(x\) increases, \(y\) changes in a non-linear manner. The highest degree (power) of any term in the equation is called the degree of the equation, and the total number of solutions corresponds to this degree.
+For example, in the equation y = x^2 + 1, as x increases, y changes in a non-linear manner. The highest degree (power) of any term in the equation is called the degree of the equation, and the total number of solutions corresponds to this degree.
 
 ## General Form of non linear equation
 
@@ -59,7 +59,7 @@ A common representation of a nonlinear equation of degree 3 is:
 ax^3 + bx^2 + cx + d = 0
 
 
-where \(x\) and \(y\) are variables and \(a\), \(b\), \(c\), and \(d\) are constants.
+where x and y are variables and a, b, c, and d are constants.
 
 ## Methods for Finding Roots of Nonlinear Equations
 
@@ -116,9 +116,9 @@ X_n+1 = X_n - \( f(X_n) \* (X_n - X_n-1) \) \/ f(X_n) - f(X_n-1)
 
 Steps:
 
-1. Start with an initial guess \(X_n\) and \(X_n-1\) where \(X_n = a\) and \(X_n-1 = b\).
+1. Start with an initial guess X_n and X_n-1 where X_n = a and X_n-1 = b.
 2. Compute the next approximation using the formula.
-3. Repeat until the function value \(f(X_n+1)\) is sufficiently close to zero.
+3. Repeat until the function value f(X_n+1) is sufficiently close to zero.
 
 ## Summary of Methods
 
@@ -133,15 +133,15 @@ Each method has its strengths and is suited for different types of equations and
 
 ### <span style="font-size: 18px; font-weight: bold;">3. Solutions for Differential Equations</span>  
 #### <span style="font-size: 12px; font-weight: bold;">a. Runge-Kutta Method</span>  
-1. **Define Initial Conditions:** Start with the initial condition \(y(x_0) = y_0\) and step size \(h\).  
-2. **Calculate the Four Slopes:** For each step \(x_n\), calculate the following slopes:  
-   - \(k_1\)  
-   - \(k_2\)  
-   - \(k_3\)  
-   - \(k_4\)  
+1. **Define Initial Conditions:** Start with the initial condition y(x0) = y0 and step size h.  
+2. **Calculate the Four Slopes:** For each step xn, calculate the following slopes:  
+   - k1 
+   - k2  
+   - k3  
+   - k4  
 
 3. **Update Solution Estimate:** Use these slopes to estimate the next value:  
-   - \(y_{n+1} = y_n + \frac{1}{6}(k_1 + 2k_2 + 2k_3 + k_4)\)  
+   - y(n+1) = yn + (1/6)*(k1 + 2*k2 + 2*k3 + k4)  
 
 4. **Repeat for Each Interval:** Move to the next interval by setting x*n+1 = x*n + h and repeat the process.  
 
