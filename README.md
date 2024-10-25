@@ -33,6 +33,7 @@ The Jacobi method, named after German mathematician Carl Gustav Jacob Jacobi (18
 
 
 a_11 * x_1 + a_12 * x_2 + ... + a_1n * x_n = b_1 
+
 a_21 * x_1 + a_22 * x_2 + ... + a_2n * x_n = b_2 
 
 a_n1 * x_1 + a_n2 * x_2 + ... + (a_nn) * x_n=b_n
@@ -43,6 +44,7 @@ The equations can be rearranged as follows:
 
 
 x_1 = (1/a_11)* (b_1 - a_12 * x_2 - a_13 * x_3 - ... - a_1n * x_n) 
+
 x_2 = (1/a_22) *(b_2 - a_21 * x_1 - a_23 * x_3 - ...  - a_2n * x_n) 
 
 x_n =(1/a_nn) * (b_n - a_n1 * x_1 - a_n2 *x_2 - ... - a_{n(n-1)} * x_{n-1})
