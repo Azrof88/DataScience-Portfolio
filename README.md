@@ -1,4 +1,4 @@
-# <span style="font-size: 18px; font-weight: bold;">Numerical Methods Solver</span>
+# <span style="font-size: 18px; font-weight: bold;">Console Application Development Using Numerical Method</span>
 
 ## <span style="font-size: 18px; font-weight: bold;">Table of Contents</span>
 - [Introduction](#introduction)  
@@ -31,27 +31,22 @@ The Numerical Methods Solver is an application designed to provide solutions for
 
 The Jacobi method, named after German mathematician Carl Gustav Jacob Jacobi (1804 – 1851), is used for solving a system of linear equations:
 
-\[
-\begin{align*}
-a_{11}x_1 + a_{12}x_2 + \ldots + a_{1n}x_n &= b_1 \\
-a_{21}x_1 + a_{22}x_2 + \ldots + a_{2n}x_n &= b_2 \\
-\vdots \\
-a_{n1}x_1 + a_{n2}x_2 + \ldots + a_{nn}x_n &= b_n
-\end{align*}
-\]
 
-To find the solution to this system \(Ax = B\), we assume that the system has a unique solution and that there are no zero entries among the diagonal or pivot elements of the coefficient matrix \(A\).
+a_11 * x_1 + a_12 * x_2 + ... + a_1n * x_n = b_1 
+a_21 * x_1 + a_22 * x_2 + ... + a_2n * x_n = b_2 
+
+a_n1 * x_1 + a_n2 * x_2 + ... + (a_nn) * x_n=b_n
+
+To find the solution to this system Ax = B, we assume that the system has a unique solution and that there are no zero entries among the diagonal or pivot elements of the coefficient matrix A.
 
 The equations can be rearranged as follows:
 
-\[
-\begin{align*}
-x_1 &= \frac{1}{a_{11}} \left[b_1 - a_{12}x_2 - a_{13}x_3 - \ldots - a_{1n}x_n\right] \\
-x_2 &= \frac{1}{a_{22}} \left[b_2 - a_{21}x_1 - a_{23}x_3 - \ldots - a_{2n}x_n\right] \\
-\vdots \\
-x_n &= \frac{1}{a_{nn}} \left[b_n - a_{n1}x_1 - a_{n2}x_2 - \ldots - a_{n(n-1)}x_{n-1}\right]
-\end{align*}
-\]
+
+x_1 = (1/a_11)* (b_1 - a_12 * x_2 - a_13 * x_3 - ... - a_1n * x_n) 
+x_2 = (1/a_22) *(b_2 - a_21 * x_1 - a_23 * x_3 - ...  - a_2n * x_n) 
+
+x_n =(1/a_nn) * (b_n - a_n1 * x_1 - a_n2 *x_2 - ... - a_{n(n-1)} * x_{n-1})
+
 
 By making an initial guess for the solution \(x^{(0)} = (x_1^{(0)}, x_2^{(0)}, \ldots, x_n^{(0)})\) and substituting these values into the right-hand side of the above equations, we get the first approximations \(x^{(1)} = (x_1^{(1)}, x_2^{(1)}, \ldots, x_n^{(1)})\). Continuing this process iteratively, we obtain a sequence of approximations \(\{x^{(k)}\}\) that converges to the exact solution of the system up to a given error tolerance as \(k \to \infty\).
 
