@@ -1,192 +1,21 @@
-# <span style="color: blue; font-size: 18px; font-weight: bold;">Numerical Methods Solver</span>
+# Linear Equation
 
-## <span style="color: blue; font-size: 18px; font-weight: bold;">Table of Contents</span>
-- <span style="color: blue; font-size: 18px; font-weight: bold;">Introduction</span>
-- <span style="color: blue; font-size: 18px; font-weight: bold;">Algorithms</span>
-  - <span style="color: yellow; font-size: 14px; font-weight: bold;">1. Solutions for Linear Equations</span>
-    - <span style="color: yellow; font-size: 14px; font-weight: bold;">a. Jacobi Iterative Method</span>
-    - <span style="color: yellow; font-size: 14px; font-weight: bold;">b. Gauss-Seidel Iterative Method</span>
-    - <span style="color: yellow; font-size: 14px; font-weight: bold;">c. Gauss Elimination</span>
-    - <span style="color: yellow; font-size: 14px; font-weight: bold;">d. Gauss-Jordan Elimination</span>
-    - <span style="color: yellow; font-size: 14px; font-weight: bold;">e. LU Factorization</span>
-  - <span style="color: yellow; font-size: 14px; font-weight: bold;">2. Solutions for Non-linear Equations</span>
-    - <span style="color: yellow; font-size: 14px; font-weight: bold;">a. Bisection Method</span>
-    - <span style="color: yellow; font-size: 14px; font-weight: bold;">b. False Position Method</span>
-    - <span style="color: yellow; font-size: 14px; font-weight: bold;">c. Secant Method</span>
-    - <span style="color: yellow; font-size: 14px; font-weight: bold;">d. Newton-Raphson Method</span>
-  - <span style="color: yellow; font-size: 14px; font-weight: bold;">3. Solutions for Differential Equations</span>
-    - <span style="color: yellow; font-size: 14px; font-weight: bold;">a. Runge-Kutta Method</span>
-  - <span style="color: yellow; font-size: 14px; font-weight: bold;">4. Matrix Inversion</span>
-- <span style="color: blue; font-size: 18px; font-weight: bold;">Conclusion</span>
-- <span style="color: blue; font-size: 18px; font-weight: bold;">References</span>
+### e. LU Factorization
 
-## <span style="color: blue; font-size: 18px; font-weight: bold;">Introduction</span>
-
-The Numerical Methods Solver is an application designed to provide solutions for various mathematical problems, including linear equations, non-linear equations, differential equations, and matrix inversion. This README file outlines the algorithms used in the application, providing detailed explanations for each method, including their workings, applications, advantages, and disadvantages.
-
-## <span style="color: blue; font-size: 18px; font-weight: bold;">Algorithms</span>
-
-### <span style="color: yellow; font-size: 14px; font-weight: bold;">1. Solutions for Linear Equations</span>
-
-#### <span style="color: yellow; font-size: 14px; font-weight: bold;">a. Jacobi Iterative Method</span>
-
-Jacobi method or Jacobian method is named after German mathematician Carl Gustav Jacob Jacobi (1804 – 1851). The main idea behind this method is:
-
-For a system of linear equations:
-
-a11x1 + a12x2 + … + a1nxn = b1
-
-a21x1 + a22x2 + … + a2nxn = b2
-
-⠇
-
-an1x1 + an2x2 + … + annxn = bn
-
-To find the solution to this system of equations Ax = B, we assume that the system of equations has a unique solution and there is no zero entry among the diagonal or pivot elements of the coefficient matrix A.
-
-Now, we shall begin to solve equation 1 for x1, equation 2 for x2 and so on equation n for xn, we get:
-
-x1 = (1/a11)[b1 – a12x2 – a13x3 – … – a1nxn]
-
-x2 = (1/a22)[b2 – a21x1 – a23x3 – … – a2nxn]
-
-⠇
-
-xn = (1/ann)[bn – an1x1 – an3x3 – … – an(n-1)xn-1]
-
-By making an initial guess for the solution x(0) = (x1(0), x2(0), …, xn(0)) and substituting these values only to the right-hand side of the above equations we get the first approximations x(1) = (x1(1), x2(1), …, xn(1)). Continuing this process iteratively we get a sequence of approximations {x(k)} such that as k → ∞, this sequence converges to the exact solution of the system of equations up to a given error tolerance.
-
-**Applications:**
-
-- **Solving large systems of linear equations in fields such as engineering and physics.**
-- **Particularly useful for sparse matrices.**
-
-**Advantages:**
-
-- **Simple to implement and understand.**
-- **Can be parallelized, making it efficient for large systems.**
-
-**Disadvantages:**
-
-- **Convergence can be slow, especially for poorly conditioned matrices.**
-- **May not converge for some types of matrices unless they are diagonally dominant.**
-
-#### <span style="color: yellow; font-size: 14px; font-weight: bold;">b. Gauss-Seidel Iterative Method</span>
-
-In the Jacobi method, the value of the variables is not modified until the next iteration, whereas in the Gauss-Seidel method, the value of the variables is modified as soon as a new value is evaluated. For instance, in the Jacobi method, the value of xi (k) is not modified until the (k + 1)th iteration, but in the Gauss-Seidel method, the value of xi (k) changes in the kth iteration only.
-
-**Applications:**
-
-- **Often used in engineering applications where large systems arise.**
-- **Effective for systems modeled by finite difference equations.**
-
-**Advantages:**
-
-- **Typically converges faster than the Jacobi method.**
-- **Efficient for large, sparse matrices.**
-
-**Disadvantages:**
-
-- **Convergence is not guaranteed for all types of matrices.**
-- **Requires initial values to be reasonably close to the solution for better convergence.**
-
-#### <span style="color: yellow; font-size: 14px; font-weight: bold;">c. Gauss Elimination</span>
-
-**Form the Augmented Matrix:**
-
-- **Combine the coefficient matrix A and the constant vector b into an augmented matrix [A ∣ b].**
-
-**Forward Elimination:**
-
-- **Convert the augmented matrix into an upper triangular form using elementary row operations. This involves:**
-  - **Selecting a pivot element (the first non-zero element in the current column).**
-  - **Performing row operations to eliminate all entries below the pivot in that column.**
-  - **Repeat for each column, moving down the rows.**
-
-**Row Operations:**
-
-- **Swap two rows.**
-- **Multiply a row by a non-zero scalar.**
-- **Add or subtract a multiple of one row to another row.**
-
-**Back Substitution:**
-
-- **Once the matrix is in upper triangular form, start from the last row and solve for the unknowns:**
-  - **For the last row, you can directly solve for the corresponding variable.**
-  - **Substitute back into the previous rows to find the remaining variables step by step.**
-
-**Applications:**
-
-- **Used extensively in engineering, physics, and computer science for solving systems of linear equations.**
-- **Also applicable in operations research and numerical simulations.**
-
-**Advantages:**
-
-- **Exact Solutions: Provides a direct method to obtain exact solutions for systems of linear equations.**
-- **Wide Applicability: Can be used for any size of linear systems.**
-- **Structured Approach: Systematic method that is easy to follow and implement.**
-
-**Disadvantages:**
-
-- **Computationally Intensive: Requires O(n^3) operations for an n×n system, making it inefficient for very large systems.**
-- **Numerical Stability: Can lead to numerical instability and rounding errors, particularly for ill-conditioned matrices.**
-- **Requires Full Rank: The method requires that the system has a unique solution (i.e., the matrix must be of full rank).**
-
-#### <span style="color: yellow; font-size: 14px; font-weight: bold;">d. Gauss-Jordan Elimination</span>
-
-**Form the Augmented Matrix:**
-
-- **Start with the augmented matrix [A∣b] that combines the coefficient matrix A and the constant vector b.**
-
-**Forward Elimination to Row Echelon Form:**
-
-- **Convert the matrix to row echelon form (upper triangular form) using elementary row operations:**
-  - **Select a pivot element in each column.**
-  - **Eliminate all entries below the pivot by performing appropriate row operations.**
-
-**Back Elimination to Reduced Row Echelon Form:**
-
-- **Continue applying row operations to eliminate all entries above each pivot, transforming the matrix into reduced row echelon form (RREF):**
-  - **The pivot elements in each column should be 1.**
-  - **Each pivot column should have zeros in all other entries.**
-
-**Extract Solutions:**
-
-- **Once in RREF, read the solutions directly from the matrix. If the system has a unique solution, the matrix will have a pivot in every column corresponding to a variable.**
-
-**Applications:**
-
-- **Widely used in linear algebra for solving systems of linear equations.**
-- **Applicable for finding the inverse of a matrix (if it exists).**
-
-**Advantages:**
-
-- **Direct Solutions: Provides a straightforward method to obtain the solutions of linear systems.**
-- **Unique and Consistent Solutions: The RREF format allows for easy identification of unique solutions or inconsistencies.**
-- **Matrix Inversion: Directly gives the inverse of a matrix if it exists, which is useful in various applications.**
-
-**Disadvantages:**
-
-- **Computationally Intensive: The method has a complexity of O(n^3), making it inefficient for very large matrices.**
-- **Numerical Stability Issues: Similar to Gauss elimination, it can be numerically unstable, especially with poorly conditioned matrices.**
-- **Requires Full Rank: For the method to work, the system must be consistent and have a unique solution.**
-
-#### <span style="color: yellow; font-size: 14px; font-weight: bold;">e. LU Factorization</span>
-
-**Overview:** LU factorization decomposes a square matrix A into a product of a lower triangular matrix L and an upper triangular matrix U.
+**Overview:** LU factorization decomposes a square matrix \( A \) into a product of a lower triangular matrix \( L \) and an upper triangular matrix \( U \).
 
 **Steps:**
 
-1. **Start with a square matrix A.**
-2. **Initialize L as an identity matrix and U as a copy of A.**
-3. **Perform Gaussian elimination to convert U to upper triangular form while updating L with multipliers.**
-4. **The result is A=LU, where L contains the multipliers and U is upper triangular.**
+1. Start with a square matrix \( A \).
+2. Initialize \( L \) as an identity matrix and \( U \) as a copy of \( A \).
+3. Perform Gaussian elimination to convert \( U \) to upper triangular form while updating \( L \) with multipliers.
+4. The result is \( A = LU \), where \( L \) contains the multipliers and \( U \) is upper triangular.
 
 **Applications:**
 
-- **Solving linear systems with the same coefficient matrix.**
-- **Matrix inversion.**
-- **Calculating determinants.**
+- Solving linear systems with the same coefficient matrix.
+- Matrix inversion.
+- Calculating determinants.
 
 **Advantages:**
 
@@ -196,16 +25,95 @@ In the Jacobi method, the value of the variables is not modified until the next 
 
 **Disadvantages:**
 
-- **Requires additional storage for L and U.**
+- **Requires additional storage for \( L \) and \( U \).**
 - **Can be unstable for singular or nearly singular matrices.**
 - **Partial pivoting may be needed for better stability, complicating the process.**
 
-### <span style="color: yellow; font-size: 14px; font-weight: bold;">3. Solutions for Differential Equations</span>
+# Nonlinear Equations
 
-#### <span style="color: yellow; font-size: 14px; font-weight: bold;">a. Runge-Kutta Method</span>
+Nonlinear equations are equations where the relationship between variables is not linear. These equations include higher powers of variables (e.g., \(X^2\) or \(X^3\)), as well as trigonometric (e.g., sin(x), cos(x)), exponential, and logarithmic functions. In nonlinear equations, the dependent variable does not change in direct proportion to the independent variable.
 
-1. **Define Initial Conditions:** Start with the initial condition y(x0) = y0 and step size h.
-2. **Calculate the Four Slopes:** For each step xn, calculate the following slopes:
+For example, in the equation \(y = x^2 + 1\), as \(x\) increases, \(y\) changes in a non-linear manner. The highest degree (power) of any term in the equation is called the degree of the equation, and the total number of solutions corresponds to this degree.
+
+## General Form of Nonlinear Equation
+
+A common representation of a nonlinear equation of degree 3 is:
+
+\[ ax^3 + bx^2 + cx + d = 0 \]
+
+where \(x\) and \(y\) are variables and \(a\), \(b\), \(c\), and \(d\) are constants.
+
+## Methods for Finding Roots of Nonlinear Equations
+
+There are several numerical methods to find the roots of nonlinear equations. Some of the most common methods include:
+
+### 1. Bisection Method
+
+The Bisection Method, also known as the binary chopping or half-interval method, works under the condition that if a function \(f(x)\) is real and continuous within an interval \(a < x < b\) and \(f(a)\) and \(f(b)\) are opposite signs, that is \(f(a) \cdot f(b) < 0\), then there is at least one real root in the interval between \(a\) and \(b\).
+
+1. Start with an interval \(temp_a, temp_b\) where \(temp_a = -Xmax\) & \(temp_b = -Xmax + 1\) if \(f(temp_a)\) and \(f(temp_b)\) have opposite signs. Then these values are taken as \(a = temp_a\) and \(b = temp_b\) and the first root is calculated by following steps 2 to 5.
+2. Compute the midpoint \(x_0\) as:
+
+   \[ X_0 = \frac{a + b}{2} \]
+
+3. Check if \(f(X_0) = 0\). If yes, then \(X_0\) is the root.
+4. If \(f(X_0) \cdot f(a) < 0\), replace \(b\) with \(X_0\) (narrowing the interval to \([a, x_0]\)).
+5. If \(f(X_0) \cdot f(b) < 0\), replace \(a\) with \(X_0\) (narrowing the interval to \([X_0, b]\)).
+6. Repeat this process until all roots are found. After finding the first root using step 1, calculate a new interval to find the remaining roots.
+
+### 2. False Position Method
+
+The False Position Method improves upon the Bisection Method by introducing a more efficient formula to find the root. Instead of using the midpoint, it calculates an improved estimate using the function values at the interval endpoints. Here \(a\) and \(b\) are calculated in the same way as in the bisection method for every root.
+
+The formula is:
+
+\[ X_0 = \frac{a \cdot f(b) - b \cdot f(a)}{f(b) - f(a)} \]
+
+Steps are similar to the bisection method, but the formula for the root is recalculated using the above formula. This method tends to converge faster.
+
+### 3. Newton-Raphson Method
+
+The Newton-Raphson Method is a more efficient and faster method that starts with an initial guess and iteratively improves it. This method uses the derivative of the function to find successively better approximations to the root.
+
+The formula is:
+
+\[ X_i = X_{i-1} - \frac{f(X_{i-1})}{f'(X_{i-1})} \]
+
+Steps:
+
+1. Start with an initial guess \(X_0\) where \(X_0 = \frac{a + b}{2}\).
+2. Compute the next approximation using the formula.
+3. Repeat until the function value \(f(X_i)\) is sufficiently close to zero.
+
+### 4. Secant Method
+
+The Secant Method is similar to the Newton-Raphson method but does not require the computation of the derivative. Instead, it approximates the derivative by using two previous points. The formula is:
+
+\[ X_{n+1} = X_n - \frac{f(X_n) \cdot (X_n - X_{n-1})}{f(X_n) - f(X_{n-1})} \]
+
+Steps:
+
+1. Start with an initial guess \(X_n\) and \(X_{n-1}\) where \(X_n = a\) and \(X_{n-1} = b\).
+2. Compute the next approximation using the formula.
+3. Repeat until the function value \(f(X_{n+1})\) is sufficiently close to zero.
+
+## Summary of Methods
+
+| Method            | Efficiency | Approach                                |
+|-------------------|------------|-----------------------------------------|
+| Bisection Method  | Moderate   | Finds root by halving intervals         |
+| False Position    | Faster     | Improves bisection with weighted midpoint |
+| Newton-Raphson    | Fast       | Uses derivative for rapid convergence   |
+| Secant Method     | Fast       | Similar to Newton-Raphson; no derivative |
+
+Each method has its strengths and is suited for different types of equations and requirements for speed and accuracy.
+
+### Solutions for Differential Equations
+
+#### a. Runge-Kutta Method
+
+1. **Define Initial Conditions:** Start with the initial condition \(y(x_0) = y_0\) and step size \(h\).
+2. **Calculate the Four Slopes:** For each step \(x_n\), calculate the following slopes:
    - (not specified in the original text)
 3. **Update Solution Estimate:** Use these slopes to estimate the next value:
    - (not specified in the original text)
@@ -213,47 +121,42 @@ In the Jacobi method, the value of the variables is not modified until the next 
 
 **Applications:**
 
-- **Widely used in engineering, physics, and biological modeling for solving ODEs.**
-- **Useful in simulations, where high accuracy over many intervals is essential.**
+- Widely used in engineering, physics, and biological modeling for solving ODEs.
+- Useful in simulations, where high accuracy over many intervals is essential.
 
 **Advantages:**
 
-- **High Accuracy: The fourth-order version is highly accurate for many ODEs.**
-- **Balanced Efficiency: Good trade-off between computational cost and accuracy.**
+- **High Accuracy:** The fourth-order version is highly accurate for many ODEs.
+- **Balanced Efficiency:** Good trade-off between computational cost and accuracy.
 
 **Disadvantages:**
 
-- **Fixed Step Size: Standard RK4 can be inefficient for problems that need variable step sizes for better accuracy.**
-- **Computationally Intensive: More calculations per step than simpler methods like Euler's method.**
+- **Fixed Step Size:** Standard RK4 can be inefficient for problems that need variable step sizes for better accuracy.
+- **Computationally Intensive:** More calculations per step than simpler methods like Euler's method.
 
-### <span style="color: yellow; font-size: 14px; font-weight: bold;">4. Matrix Inversion</span>
+### Matrix Inversion
 
-1. **LU Decomposition:** Decompose matrix A into A=LU, where:
-   - **L is a lower triangular matrix with ones on its diagonal.**
-   - **U is an upper triangular matrix.**
-   - **This decomposition can be done using techniques like Gaussian elimination.**
-2. **Set up Identity Matrix:** To find the inverse, let I be the identity matrix.
+1. **LU Decomposition:** Decompose matrix \(A\) into \(A=LU\), where:
+   - \(L\) is a lower triangular matrix with ones on its diagonal.
+   - \(U\) is an upper triangular matrix.
+   - This decomposition can be done using techniques like Gaussian elimination.
+2. **Set up Identity Matrix:** To find the inverse, let \(I\) be the identity matrix.
 3. **Solve for Inverse Columns:**
-   - **Solve to find matrix Y (intermediate matrix).**
-   - **Solve to get the inverse.**
-   - **These are solved by considering each column of I and finding the corresponding column in the inverse.**
+   - Solve to find matrix \(Y\) (intermediate matrix).
+   - Solve to get the inverse.
+   - These are solved by considering each column of \(I\) and finding the corresponding column in the inverse.
 4. **Combine Solutions:** The columns from step 3 form the inverse matrix.
 
 **Applications:**
 
-- **System of Linear Equations: Used for efficiently solving linear systems where multiple right-hand sides need to be solved.**
-- **Engineering and Science: Common in numerical simulations and modeling where inversion of large matrices is required.**
+- System of Linear Equations: Used for efficiently solving linear systems where multiple right-hand sides need to be solved.
+- Engineering and Science: Common in numerical simulations and modeling where inversion of large matrices is required.
 
 **Advantages:**
 
-- **Efficient for Repeated Solutions: LU decomposition can be reused for multiple right-hand sides, saving computation.**
-- **Simplifies Calculations: Once L and U are computed, inverting becomes a set of straightforward linear solves.**
+- **Efficient for Repeated Solutions:** LU decomposition can be reused for multiple right-hand sides, saving computation.
+- **Simplifies Calculations:** Once \(L\) and \(U\) are computed, inverting becomes a set of straightforward linear solves.
 
 **Disadvantages:**
 
-- **Not Always Stable: LU decomposition may be numerically unstable for certain matrices (e.g., singular or near-singular matrices).**
-- **Inapplicable for Singular Matrices: LU decomposition and inversion cannot be used if A is singular (determinant is zero).**
-
-## <span style="color: blue; font-size: 18px; font-weight: bold;">Conclusion</span>
-
-This Numerical Methods Solver provides essential tools for solving linear and non-linear equations, differential equations, and matrix inversion, facilitating various applications. Each algorithm has strengths and weaknesses, making it crucial to choose the appropriate method based on the specific problem requirements.
+- **Not Always Stable:** LU decomposition may be numerically unstable for certain matrices (e.g., singular or near-singular matrices).
