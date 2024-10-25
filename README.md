@@ -1,6 +1,4 @@
-Here's your text reformatted for clarity and consistency with the previous section, using Markdown syntax suitable for a GitHub README.md file:
 
-```markdown
 # Linear Equation
 
 ### e. LU Factorization
@@ -162,7 +160,6 @@ Each method has its strengths and is suited for different types of equations and
 
 **Disadvantages:**
 
-- **Not Always Stable:** LU decomposition may be numerically unstable for certain matrices (e.g., singular or near-singular matrices).
-```
+- **Not Always Stable:** LU decomposition may be numerically unstable for certain matrices (e.g., singular or near-singular matrices.
 
-This reformatted text maintains consistency in style and structure, making it easier to read in a GitHub README.md file.
+
