@@ -166,11 +166,11 @@ Each method has its strengths and is suited for different types of equations and
 2. **Set up Identity Matrix:** To find the inverse let \(I\) be the identity matrix.  
 
 3. **Solve for Inverse Columns:**  
-   - Solve \(LY = I\) to find matrix \(Y\) (intermediate matrix).  
-   - Solve \(UX = Y\) to get \(X\).  
-   - These are solved by considering each column of \(I\) and finding the corresponding column in \(X\).  
+   - Solve LY = I to find matrix Y (intermediate matrix).  
+   - Solve UX = Y to get X.  
+   - These are solved by considering each column of I and finding the corresponding column in X.  
 
-4. **Combine Solutions:** The columns from step 3 form the inverse matrix \(A^{-1}\).  
+4. **Combine Solutions:** The columns from step 3 form the inverse matrix A^-1.  
 
 **Applications:**  
 - System of Linear Equations: Used for efficiently solving linear systems where multiple right-hand sides need to be solved.  
@@ -182,7 +182,7 @@ Each method has its strengths and is suited for different types of equations and
 
 **Disadvantages:**  
 - Not Always Stable: LU decomposition may be numerically unstable for certain matrices (e.g., singular or near-singular matrices).  
-- Inapplicable for Singular Matrices: LU decomposition and inversion cannot be used if \(A\) is singular (determinant is zero).  
+- Inapplicable for Singular Matrices: LU decomposition and inversion cannot be used if A is singular (determinant is zero).  
 
 ## <span style="font-size: 18px; font-weight: bold;">Conclusion</span>  
 This Numerical Methods Solver provides essential tools for solving linear and non-linear equations, differential equations, and matrix inversion, facilitating various applications. Each algorithm has strengths and weaknesses, making it crucial to choose the appropriate method based on the specific problem requirements.  
